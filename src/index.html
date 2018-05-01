@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myController">
+		<!-- TESTING SIMPLE SERVICE -->
+		<div>
+			<button ng-click="getData()">Get Data</button>
+			Data: {{data}}
+		</div>
+		<hr>
+
+		<!-- TESTING CONTROLLER -->
+		<div>
+			Enter a number :
+			<input type="text" ng-model="inputValue">
+			<button ng-click=calculateSquare(inputValue)>Calculate</button>
+			<div ng-show="inputValue !== null">The square of {{inputValue}} is {{result}}</div>
+		</div>
+		<hr>
+
+		<!-- TESTING CONTROLLER WITH DEPENDENCIES -->
+		<div>
+			<input type="text" name="" ng-model="value1">
+			<input type="text" name="" ng-model="value2">
+			<button ng-click="add(value1, value2)">Add</button>
+			<button ng-click="subtract(value1, value2)">Subtract</button>
+			<div>
+				Result: {{calculResult}}
+			</div>
+		</div>
+		<hr>
+
+		<!-- TESTING SERVICE WITH DEPENDENCIES -->
+		<div>
+			<button ng-click='getName()'>Afficher nom :</button>{{name}}
+		</div>
+		<hr>
+
+		<!-- TESTING AJAX CALLS -->
+		<div>
+			<button ng-click='getStates()'>Get States</button>
+			{{states}}
+		</div>
+		<hr>
+
+		<!-- TESTING FILTERS -->
+		<div>
+			<input type="text" name="" ng-model='inputDashValue'>
+			<button ng-click='applyFilter()'>Apply filter</button>
+			{{dashValue}}
+		</div>
+		<hr>
+
+		<!-- TESTING FILTERS WITH DEPENDENCIES -->
+		<div>
+			<div>First Value: {{firstValue | transform: 'capitalize'}}</div>
+			<div>Second Value: {{secondValue}}</div>
+			<div>
+				<input type="text" name="" ng-model='inputTransformValue' ng-change='applyTransformFilter()'>
+			</div>
+			Thrid Value: {{thirdValue}}
+		</div>
+		<hr>
+
+		<!-- TESTING DIRECTIVES -->
+		<tst-simple-directive></tst-simple-directive>
+		<hr>
+
+		<!-- TESTING DIRECTIVES WITH EXTERNAL TEMPLATES -->
+		<tst-external-directive></tst-external-directive>
+		<hr>
+
+		<!-- TESTING DIRECTIVES BINDINGS -->
+		<tst-binding-directive person="{firstName: 'John', lastName: 'Doe'}"></tst-binding-directive>
+		<hr>
+		
+		<!-- TESTING EVENTS ON DIRECTIVES -->
+		<tst-events-directive is-activated="true"></tst-events-directive>
+	</div>
+</body>
+</html>
